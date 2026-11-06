@@ -22,8 +22,13 @@ productos.push(new Producto(2, "Microondas", 180000, 10));
 productos.push(new Producto(3, "Pava electrica", 45000, 15));
 productos.push(new Producto(4, "Licuadora", 95000, 12));
 
-console.log(productos);
 console.table(productos);
+
+const buscado = productos.find(p => p.nombre === "Microondas")
+console.log("Producto buscado: ", buscado)
+
+const disponibles = productos.filter(p => p.stock > 0)
+console.table(disponibles)
 
 while (confirm("¿Deseas comprar un producto en Distribuidora LUMA?")) {
     let listadoProductos = "";
@@ -56,5 +61,10 @@ while (confirm("¿Deseas comprar un producto en Distribuidora LUMA?")) {
         alert("Ingreso inválido");
     }
 }
+
+
+const total = productos.reduce((acc, p) => acc + p.precio * p.stock, 0)
+
+console.log("valor total del stock: $" + total)
 
 console.table(productos);
